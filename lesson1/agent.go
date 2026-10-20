@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cloudwego/eino-ext/components/model/ark"
+	"github.com/cloudwego/eino-ext/components/model/openai"
 	"github.com/cloudwego/eino/schema"
 )
 
@@ -15,7 +15,7 @@ func Agent() {
 	ctx := context.Background()
 
 	// 创建ChatModel
-	model, err := ark.NewChatModel(ctx, &ark.ChatModelConfig{
+	model, err := openai.NewChatModel(ctx, &openai.ChatModelConfig{
 		BaseURL: os.Getenv("BASE_URL"),
 		Model:   os.Getenv("MODEL_ID"),
 		APIKey:  os.Getenv("API_KEY"),
