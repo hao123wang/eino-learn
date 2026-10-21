@@ -1,7 +1,7 @@
 package main
 
 import (
-	"eino-learn/lesson2/chain"
+	"eino-learn/lesson2/graph"
 
 	"github.com/joho/godotenv"
 )
@@ -15,5 +15,5 @@ func main() {
 	// lesson1.Agent()
 
 	// 版本2，使用chain编排，实现agent
-	chain.Agent()
+	graph.Agent()
 }

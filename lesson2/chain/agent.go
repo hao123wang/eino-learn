@@ -3,6 +3,7 @@ package chain
 
 import (
 	"context"
+	"eino-learn/biztools"
 	"log"
 	"os"
 
@@ -17,16 +18,6 @@ import (
 func Agent() {
 	ctx := context.Background()
 
-	// 定义聊天模板
-	sysPrompt := `你是一个资深的金融投资分析师，你将根据用户提供的股票代码或是企业名称，查询股票的相关信息,
-		并根据信息去做一个详细的投资分析，从行业背景、企业的财报，一些关键的参考指标，来给用户提供一个详细的投资分析。`
-	chatTempl := prompt.FromMessages(schema.FString,
-		schema.SystemMessage(sysPrompt),
-		// 作为占位符，在prompt中预留历史消息插入位置, bool表示是否允许接受空的消息列表（用户可能首次对话）
-		schema.MessagesPlaceholder("history", true),
-		schema.UserMessage("{user_query}"), // 用户输入的问题
-	)
-
 	// 创建聊天模型
 	chatModel, err := openai.NewChatModel(ctx, &openai.ChatModelConfig{
 		Model:   os.Getenv("MODEL_ID"),
@@ -36,6 +27,16 @@ func Agent() {
 	if err != nil {
 		log.Fatalf("failed to create chat model: %v", err)
 	}
+
+	// ChatTemplate 节点
+	sysPrompt := `你是一个资深的金融投资分析师，你将根据用户提供的股票代码或是企业名称，查询股票的相关信息,
+		并根据信息去做一个详细的投资分析，从行业背景、企业的财报，一些关键的参考指标，来给用户提供一个详细的投资分析。`
+	chatTempl := prompt.FromMessages(schema.FString,
+		schema.SystemMessage(sysPrompt),
+		// 作为占位符，在prompt中预留历史消息插入位置, bool表示是否允许接受空的消息列表（用户可能首次对话）
+		schema.MessagesPlaceholder("history", true),
+		schema.UserMessage("{user_query}"), // 用户输入的问题
+	)
 
 	// 创建工具
 	stockInfoTool := utils.NewTool(&schema.ToolInfo{
@@ -52,9 +53,9 @@ func Agent() {
 				Desc: "企业名称",
 			},
 		}),
-	}, getStockInfo)
+	}, biztools.GetStockInfo)
 
-	// 将工具信息绑定到模型
+	// 工具绑定给模型
 	toolInfo, err := stockInfoTool.Info(ctx)
 	if err != nil {
 		log.Fatalf("failed to get tool info: %v", err)
@@ -63,16 +64,16 @@ func Agent() {
 		log.Fatalf("failed to bind tools: %v", err)
 	}
 
-	// 创建一个工具节点
+	// 工具节点
 	toolsNode, err := compose.NewToolNode(ctx, &compose.ToolsNodeConfig{
 		Tools: []tool.BaseTool{stockInfoTool},
 	})
 	if err != nil {
-		log.Fatalf("new tool node failed: %v", err)
+		log.Fatalf("failed to create tools node: %v", err)
 	}
 
 	// 创建一个lambda节点
-	lambdaToolToText := compose.TransformableLambda(toolToTextLambda)
+	lambdaToolToText := compose.TransformableLambda(biztools.ToolToTextLambda)
 
 	// chain编排 NewChain[输入类型, 输出类型]
 	chain := compose.NewChain[map[string]any, *schema.Message]()
