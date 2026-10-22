@@ -73,7 +73,7 @@ func Agent() {
 	}
 
 	// 创建一个lambda节点
-	lambdaToolToText := compose.TransformableLambda(biztools.ToolToTextLambda)
+	lambdaToolToText := compose.InvokableLambda(biztools.ToolToTextLambda)
 
 	// chain编排 NewChain[输入类型, 输出类型]
 	chain := compose.NewChain[map[string]any, *schema.Message]()

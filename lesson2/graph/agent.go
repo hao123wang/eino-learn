@@ -72,7 +72,7 @@ func Agent() {
 	}
 
 	// 创建一个lambda节点
-	lambdaNode := compose.TransformableLambda(biztools.ToolToTextLambda)
+	lambdaNode := compose.InvokableLambda(biztools.ToolToTextLambda)
 
 	// 给每个节点一个key
 	chatTemplKey := "chat_template"
