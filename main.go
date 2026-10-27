@@ -1,7 +1,7 @@
 package main
 
 import (
-	"eino-learn/lesson3/tools"
+	workflow "eino-learn/lesson4/03_workflow"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -21,5 +21,10 @@ func main() {
 	// chathistory.ChatModel()
 
 	// lesson3
-	tools.ChatModel()
+	// tools.ChatModel()
+
+	// lesson4
+	// chainmodel.ChatModel()
+	// graphmodel.ChatModel()
+	workflow.ChatModel()
 }
