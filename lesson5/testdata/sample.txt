@@ -1,0 +1,8 @@
+Eino 是字节跳动开源的 Go 语言大模型应用开发框架。
+
+它把大模型应用拆成一组标准组件：ChatModel、ChatTemplate、Tool、Document Loader、Parser、Transformer、Embedding、Indexer、Retriever。
+每个组件只定义接口，具体实现放在 eino-ext 仓库里，例如 deepseek、openai、ark、ollama。
+
+组件之间通过编排连接。Chain 是最简单的线性编排；Graph 支持分支和循环；Workflow 支持按字段在节点之间传递数据。
+
+在编排之上，Eino 还提供了 ReAct Agent 等开箱即用的智能体实现。

@@ -1,7 +1,7 @@
 package main
 
 import (
-	workflow "eino-learn/lesson4/03_workflow"
+	docsplit "eino-learn/lesson5/03_doc_split"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -26,5 +26,11 @@ func main() {
 	// lesson4
 	// chainmodel.ChatModel()
 	// graphmodel.ChatModel()
-	workflow.ChatModel()
+	// workflow.ChatModel()
+
+	// lesson5
+	// docparser.ParseDoc()
+	// docparser.ExtParse()
+	// docloader.LoadURLDocument()
+	docsplit.SplitDoc()
 }

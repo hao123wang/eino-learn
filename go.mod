@@ -4,12 +4,21 @@ go 1.26.0
 
 require (
 	github.com/cloudwego/eino v0.7.13
+	github.com/cloudwego/eino-ext/components/document/loader/file v0.0.0-20261019121619-eee37f63ff95
+	github.com/cloudwego/eino-ext/components/document/loader/url v0.0.0-20261019121619-eee37f63ff95
+	github.com/cloudwego/eino-ext/components/document/parser/html v0.0.0-20241224063832-9fbcc0e56c28
+	github.com/cloudwego/eino-ext/components/document/parser/pdf v0.0.0-20261019121619-eee37f63ff95
+	github.com/cloudwego/eino-ext/components/document/transformer/splitter/markdown v0.0.0-20261019121619-eee37f63ff95
+	github.com/cloudwego/eino-ext/components/document/transformer/splitter/recursive v0.0.0-20261019121619-eee37f63ff95
 	github.com/cloudwego/eino-ext/components/model/deepseek v0.1.7
 	github.com/joho/godotenv v1.5.1
 	github.com/peterh/liner v1.2.3
 )
 
 require (
+	github.com/PuerkitoBio/goquery v1.8.1 // indirect
+	github.com/andybalholm/cascadia v1.3.1 // indirect
+	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/gopkg v0.1.3 // indirect
@@ -23,10 +32,13 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/goph/emperror v0.17.2 // indirect
+	github.com/gorilla/css v1.0.1 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
+	github.com/ledongthuc/pdf v0.0.0-20250511090121-5959a4027728 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-runewidth v0.0.31 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/nikolalohinski/gonja v1.5.3 // indirect
@@ -40,6 +52,7 @@ require (
 	github.com/yargevad/filepathx v1.0.0 // indirect
 	golang.org/x/arch v0.11.0 // indirect
 	golang.org/x/exp v0.0.0-20250218142911-aa4b98e5adaa // indirect
+	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
