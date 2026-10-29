@@ -1,7 +1,7 @@
 package main
 
 import (
-	docsplit "eino-learn/lesson5/03_doc_split"
+	semanticssplit "eino-learn/lesson6/03_semantics_split"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -32,5 +32,10 @@ func main() {
 	// docparser.ParseDoc()
 	// docparser.ExtParse()
 	// docloader.LoadURLDocument()
-	docsplit.SplitDoc()
+	// docsplit.SplitDoc()
+
+	// lesson6
+	// textembedding.TextEmbedding()
+	// vectorretrieval.VectorRetrieval()
+	semanticssplit.SemanticsSplit()
 }
